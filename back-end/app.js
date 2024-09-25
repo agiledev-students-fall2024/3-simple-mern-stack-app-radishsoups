@@ -78,5 +78,26 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+// a route to display about page
+app.get('/aboutUs', (req, res) => {
+  try {
+    res.json({
+      content: [
+        "Hi I'm Claire, a student at New York University majoring in Computer Science and minoring in Web Programming and Applications. I'm experienced in both frontend and backend development with a passion for exploring the intersection of technology and creativity !",
+        "I'm from Upstate New York, which is known for our many lakes, mountains, and hiking trails.",
+        "My past industry experiences include working as an intern at CVS Health, Octavate, and Alkor Semicon Total Solutions Inc. Currently, I'm an academic tutor at NYU for Introduction to Web Design and Principles.",
+        "Some of my hobbies include baking bread, weightlifting, and playing around with CSS. I also like to go on long walks with my dog, Bonnie."
+      ],
+      image: "/img-about.jpg"
+    })
+
+  } catch (err) {
+    return res.status(400).json({
+      error: err,
+      status: 'failed to retrieve information'
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
